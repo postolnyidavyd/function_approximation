@@ -68,7 +68,7 @@ export default function LagrangeChart({ points }) {
   const data = {
     datasets: [
       {
-        label: "Поліном Лагранжа (проходить через всі)",
+        label: "Поліном Лагранжа",
         data: curveData,
         borderColor: "#111111",
         borderWidth: 1.5,

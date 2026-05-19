@@ -2,11 +2,13 @@
 import "./App.css";
 import LagrangeChart from "./components/Lagrangechart.jsx";
 import {DATASETS, MNK_DEGREE} from "./data/points.js";
+import MNKChart from "./components/MnkChart.jsx";
 
 function App() {
 
   return (
     <>
+      <MNKChart points={DATASETS["10"]} degree={MNK_DEGREE["10"]}/>
       <LagrangeChart points={DATASETS["10"]} />
     </>
   );
