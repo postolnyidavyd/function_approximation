@@ -1,0 +1,61 @@
+.chartBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.25rem;
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    background: var(--color-background-primary);
+}
+
+.chartLabel {
+    font-family: 'Fraunces', serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.chartLabel::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--color-border-tertiary);
+}
+
+.chartCanvas {
+    position: relative;
+    width: 100%;
+}
+
+.metrics {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 0.5rem;
+    border-top: 0.5px solid var(--color-border-tertiary);
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.metricLabel {
+    font-family: 'Fraunces', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+}
+
+.metricValue {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
