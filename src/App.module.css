@@ -1,0 +1,131 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=JetBrains+Mono:wght@400;500&family=Nunito:wght@400;500&display=swap");
+
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2.5rem 3rem 4rem;
+    font-family: "Nunito", sans-serif;
+    color: var(--color-text-primary);
+}
+
+.header {
+    border-bottom: 1.5px solid var(--color-border-primary);
+    padding-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.title {
+    font-family: "Fraunces", serif;
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    font-family: "Fraunces", serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.sectionTitle {
+    font-family: "Fraunces", serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-text-tertiary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.sectionTitle::after {
+    content: "";
+    flex: 1;
+    height: 0.5px;
+    background: var(--color-border-tertiary);
+}
+
+.controls {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.btn {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md);
+    background: var(--color-background-primary);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn:hover {
+    background: var(--color-background-secondary);
+    border-color: var(--color-border-primary);
+    color: var(--color-text-primary);
+}
+
+.btnActive {
+    background: var(--color-text-primary);
+    color: var(--color-background-primary);
+    border-color: var(--color-text-primary);
+}
+
+.btnActive:hover {
+    background: var(--color-text-secondary);
+    border-color: var(--color-text-secondary);
+}
+
+.chartsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 640px) {
+    .chartsGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.bottomRow {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.bottomLeft {
+    flex: 3;
+    min-width: 0;
+}
+
+.bottomRight {
+    flex: 2;
+    min-width: 0;
+}
+
+@media (max-width: 700px) {
+    .bottomRow {
+        flex-direction: column;
+    }
+}

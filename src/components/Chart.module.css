@@ -1,3 +1,4 @@
+
 .chartBox {
     display: flex;
     flex-direction: column;
@@ -7,6 +8,7 @@
     border-radius: var(--border-radius-lg);
     background: var(--color-background-primary);
 }
+
 
 .chartLabel {
     font-family: 'Fraunces', serif;
@@ -26,10 +28,13 @@
     background: var(--color-border-tertiary);
 }
 
+
 .chartCanvas {
     position: relative;
     width: 100%;
+    height: 420px;
 }
+
 
 .metrics {
     display: flex;
@@ -58,4 +63,10 @@
     font-size: 0.82rem;
     font-weight: 500;
     color: var(--color-text-primary);
+}
+
+.chartCanvasResiduals {
+    position: relative;
+    width: 100%;
+    height: 280px;
 }

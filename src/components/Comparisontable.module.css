@@ -1,5 +1,4 @@
 .wrapper {
-    /* Змінено з 0.5px на 1px, щоб бордери не зникали на звичайних екранах */
     border: 1px solid var(--color-border-tertiary);
     border-radius: var(--border-radius-lg);
     overflow: hidden;
@@ -37,10 +36,8 @@
     border-right: none;
 }
 
-/* Всі td — числові, праворуч */
 .table td {
     padding: 0.6rem 1rem;
-    /* Змінено на 1px */
     border-bottom: 1px solid var(--color-border-tertiary);
     border-right: 1px solid var(--color-border-tertiary);
     font-family: 'Fraunces', serif;
@@ -64,11 +61,9 @@
     background: var(--color-background-secondary);
     color: var(--color-text-secondary) !important;
     vertical-align: middle;
-    /* Гарантуємо, що об'єднана комірка матиме лінію справа */
     border-right: 1px solid var(--color-border-tertiary) !important;
 }
 
-/* ФІКС: Зв'язуємо тег td з класом, щоб підвищити специфічність і перебити загальний .table td */
 .table td.tdMethod {
     text-align: left;
     font-weight: 500;

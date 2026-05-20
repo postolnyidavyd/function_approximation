@@ -52,25 +52,27 @@ export default function MNKChart({ points, degree }) {
   const mnkResult = useMemo(() => computeMNK(points, degree), [points, degree]);
 
   const [visibleCount, setVisibleCount] = useState(0);
-  const rafRef = useRef(null);
+  const requestAnimationFrameRef = useRef(null);
 
   useEffect(() => {
-    cancelAnimationFrame(rafRef.current);
+    cancelAnimationFrame(requestAnimationFrameRef.current);
+
+    const total = mnkResult.plotX.length;
 
     let count = 0;
     setVisibleCount(0);
-    const total = mnkResult.plotX.length;
 
     const animate = () => {
       count = Math.min(count + STEP, total);
       setVisibleCount(count);
       if (count < total) {
-        rafRef.current = requestAnimationFrame(animate);
+        requestAnimationFrameRef.current = requestAnimationFrame(animate);
       }
     };
 
-    rafRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafRef.current);
+    requestAnimationFrameRef.current = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(requestAnimationFrameRef.current);
   }, [mnkResult]);
 
   const residualPlugin = useMemo(
@@ -81,7 +83,6 @@ export default function MNKChart({ points, degree }) {
   const curveData = mnkResult.plotX
     .slice(0, visibleCount)
     .map((x, i) => ({ x, y: mnkResult.plotY[i] }));
-
 
   const allX = [...points.map((p) => p.x), ...mnkResult.plotX];
   const allY = [...points.map((p) => p.y), ...mnkResult.plotY];
@@ -128,8 +129,6 @@ export default function MNKChart({ points, degree }) {
       makePointsDataset(points),
     ],
   };
-
-  const { RMSE, R2 } = mnkResult;
 
   return (
     <div className={styles.chartBox}>

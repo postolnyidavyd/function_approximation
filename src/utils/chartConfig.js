@@ -1,7 +1,7 @@
 import {
   Chart as ChartJS,
   LinearScale,
-    CategoryScale,
+  CategoryScale,
   PointElement,
   LineElement,
   BarElement,
