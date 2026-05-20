@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Bar } from "react-chartjs-2";
 import { computeMNK } from "../utils/mnk";
-import "../utils/chartConfig"; // реєстрація Chart.js компонентів
+import { makeBaseOptions } from "../utils/chartConfig";
 import styles from "./Chart.module.css";
 
 export default function ResidualsChart({ points, degree }) {
@@ -9,7 +9,6 @@ export default function ResidualsChart({ points, degree }) {
     () => computeMNK(points, degree),
     [points, degree],
   );
-
 
   const backgroundColors = residuals.map((r) =>
     r >= 0 ? "#111111" : "#888888",
@@ -21,7 +20,7 @@ export default function ResidualsChart({ points, degree }) {
     labels,
     datasets: [
       {
-        label: "r",
+        label: "rᵢ = yᵢ - P(xᵢ)",
         data: residuals,
         backgroundColor: backgroundColors,
         borderRadius: 3,
@@ -30,80 +29,36 @@ export default function ResidualsChart({ points, degree }) {
     ],
   };
 
-  const options = {
-    responsive: true,
-    maintainAspectRatio: true,
-    animation: { duration: 600 },
-    plugins: {
-      legend: {
-        labels: {
-          font: { family: "Fraunces", size: 11 },
-          color: "#111111",
-          padding: 16,
-          usePointStyle: true,
-          pointStyle: "rect",
-          pointStyleWidth: 14,
-          generateLabels: (chart) => {
-            const original = chart.data.datasets[0].label;
-            return [
-              {
-                text: original,
-                fillStyle: "#111111",
-                strokeStyle: "#111111",
-                lineWidth: 0,
-                pointStyle: "rect",
-                hidden: false,
-                datasetIndex: 0,
-              },
-            ];
-          },
-        },
-      },
-      tooltip: {
-        backgroundColor: "#ffffff",
-        borderColor: "#cccccc",
-        borderWidth: 1,
-        titleColor: "#111111",
-        bodyColor: "#6b6b6b",
-        titleFont: { family: "Fraunces", size: 11, weight: "500" },
-        bodyFont: { family: "JetBrains Mono", size: 11 },
-        padding: 10,
-        displayColors: false,
-        callbacks: {
-          title: (items) => items[0].label,
-          label: (ctx) => ` ri = ${ctx.parsed.y.toFixed(5)}`,
-        },
-      },
-    },
-    scales: {
-      x: {
-        grid: { display: false },
-        ticks: {
-          font: { family: "JetBrains Mono", size: 10 },
-          color: "#6b6b6b",
-        },
-        border: { color: "#cccccc" },
-      },
-      y: {
-        title: {
-          display: true,
-          text: "r",
-          font: { family: "Fraunces", size: 11 },
-          color: "#6b6b6b",
-        },
-        grid: {
-          color: "#e5e5e5",
+  const options = makeBaseOptions({ yLabel: "r" });
 
-          lineWidth: 0.5,
-        },
-        ticks: {
-          font: { family: "JetBrains Mono", size: 10 },
-          color: "#6b6b6b",
-        },
-        border: { color: "#cccccc", dash: [4, 4] },
-      },
-    },
+  options.animation = { duration: 600 };
+
+  options.plugins.tooltip.callbacks = {
+    title: (items) => items[0].label,
+    label: (ctx) => ` ri = ${ctx.parsed.y.toFixed(5)}`,
   };
+
+  options.plugins.legend.labels.pointStyle = "rect";
+  options.plugins.legend.labels.generateLabels = (chart) => {
+    const original = chart.data.datasets[0].label;
+    return [
+      {
+        text: original,
+        fillStyle: "#111111",
+        strokeStyle: "#111111",
+        lineWidth: 0,
+        pointStyle: "rect",
+        hidden: false,
+        datasetIndex: 0,
+      },
+    ];
+  };
+
+  options.scales.x.type = "category";
+  options.scales.x.grid.display = false;
+  options.scales.x.title.display = false;
+
+  options.scales.y.border = { color: "#cccccc", dash: [4, 4] };
 
   return (
     <div className={styles.chartBox}>

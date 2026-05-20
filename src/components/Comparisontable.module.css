@@ -1,0 +1,83 @@
+.wrapper {
+    /* Змінено з 0.5px на 1px, щоб бордери не зникали на звичайних екранах */
+    border: 1px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead tr {
+    background: var(--color-background-secondary);
+}
+
+.table th {
+    font-family: 'Fraunces', serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    color: var(--color-text-secondary);
+    padding: 0.6rem 1rem;
+    /* Змінено на 1px */
+    border-bottom: 1px solid var(--color-border-secondary);
+    border-right: 1px solid var(--color-border-tertiary);
+    white-space: nowrap;
+    text-align: right;
+}
+
+.table th:first-child,
+.table th:nth-child(2) {
+    text-align: left;
+}
+
+.table th:last-child {
+    border-right: none;
+}
+
+/* Всі td — числові, праворуч */
+.table td {
+    padding: 0.6rem 1rem;
+    /* Змінено на 1px */
+    border-bottom: 1px solid var(--color-border-tertiary);
+    border-right: 1px solid var(--color-border-tertiary);
+    font-family: 'Fraunces', serif;
+    font-size: 0.82rem;
+    color: var(--color-text-primary);
+    text-align: right;
+}
+
+.table td:last-child {
+    border-right: none;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tdSet {
+    text-align: left !important;
+    font-weight: 500;
+    font-size: 0.78rem !important;
+    background: var(--color-background-secondary);
+    color: var(--color-text-secondary) !important;
+    vertical-align: middle;
+    /* Гарантуємо, що об'єднана комірка матиме лінію справа */
+    border-right: 1px solid var(--color-border-tertiary) !important;
+}
+
+/* ФІКС: Зв'язуємо тег td з класом, щоб підвищити специфічність і перебити загальний .table td */
+.table td.tdMethod {
+    text-align: left;
+    font-weight: 500;
+}
+
+.table tbody tr:hover td {
+    background: var(--color-background-secondary);
+}
+
+.table tbody tr:hover .tdSet {
+    background: var(--color-background-tertiary);
+}
