@@ -1,6 +1,7 @@
 import {
   Chart as ChartJS,
   LinearScale,
+    CategoryScale,
   PointElement,
   LineElement,
   BarElement,
@@ -13,6 +14,7 @@ import {
 // Реєструємо всі потрібних компонентів
 ChartJS.register(
   LinearScale,
+  CategoryScale,
   PointElement,
   LineElement,
   BarElement,
