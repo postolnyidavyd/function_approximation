@@ -60,6 +60,7 @@ export default function ResidualsChart({ points, degree }) {
 
   options.scales.y.border = { color: "#cccccc", dash: [4, 4] };
 
+
   return (
     <div className={styles.chartBox}>
       <p className={styles.chartLabel}>Залишки МНК</p>

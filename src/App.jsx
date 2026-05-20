@@ -5,9 +5,7 @@ import ResidualChart from "./components/ResidualChart";
 import ComparisonTable from "./components/ComparisonTable";
 import { DATASETS, MNK_DEGREE } from "./data/points";
 import styles from "./App.module.css";
-
 const SETS = [5, 10, 20];
-
 export default function App() {
   const [activeSet, setActiveSet] = useState(5);
 
